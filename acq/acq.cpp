@@ -20,6 +20,7 @@ BEGIN_MESSAGE_MAP(CacqApp, CWinApp)
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_LOGIN, &CacqApp::OnLogin)
 	ON_COMMAND(ID_32772, &CacqApp::OnEditConfig)
+	ON_COMMAND(ID_EDIT_UNDO, &CacqApp::OnEditUndo)
 END_MESSAGE_MAP()
 
 
@@ -158,6 +159,7 @@ CView* CacqApp::SwitchView(CRuntimeClass* clazz){
    #endif
 
    pActiveView->ShowWindow(SW_HIDE);
+   delete pActiveView;
    pNewView->ShowWindow(SW_SHOW);
    ((CFrameWnd*) m_pMainWnd)->SetActiveView(pNewView);
    ((CFrameWnd*) m_pMainWnd)->RecalcLayout();
@@ -177,4 +179,9 @@ void CacqApp::OnEditConfig()
 {
 	SwitchView(RUNTIME_CLASS(CEditConfigView));
 	
+}
+
+void CacqApp::OnEditUndo()
+{
+	SwitchView(RUNTIME_CLASS(CDataView));
 }

@@ -7,8 +7,10 @@
 #define IDR_MAINFRAME                   128
 #define IDR_acqTYPE                     129
 #define IDD_DIALOG1                     131
+#define IDD_ACQ_DATA                    131
 #define IDD_ACQ_CONFIG                  132
 #define IDD_CONFIG_FORM                 133
+#define IDD_ACQ_LOGIN                   134
 #define IDC_EDIT2                       1001
 #define IDC_EDIT6                       1005
 #define IDC_BUTTON1                     1006
@@ -27,6 +29,7 @@
 #define IDC_EDIT4                       1023
 #define IDC_EDIT5                       1030
 #define IDC_EDIT7                       1031
+#define IDC_EDIT8                       1032
 #define ID_32772                        32772
 #define ID_LOGIN                        32773
 #define IDS_NEW                         65000

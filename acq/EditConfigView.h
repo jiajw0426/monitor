@@ -1,6 +1,8 @@
 #pragma once
 #include "afxwin.h"
 #include "../dal/database.h"
+#include "MainFrm.h"
+
 
 
 
@@ -13,12 +15,13 @@ class CEditConfigView : public CFormView
 public:
 
 	CEditConfigView();
-
+   
 	BOOL Create(LPCTSTR, LPCTSTR, DWORD,
 		const RECT&, CWnd*, UINT, CCreateContext*);
 protected:
           // 动态创建所使用的受保护的构造函数
 	virtual ~CEditConfigView();
+	BOOL validateConfig();
 
 public:
 	enum { IDD = IDD_CONFIG_FORM };
@@ -35,7 +38,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	OConfig  oconfig; 
+	OConfig*  oconfig; 
 	CComboBox serialComBox;
 	CComboBox baudComBox;
 	CComboBox porityComBox;
@@ -63,6 +66,12 @@ private:
 	void initDataType(void);
 public:
 	afx_msg void OnBnClickedBtnNewconfig();
+	CEdit bytecountEdit;
+	afx_msg void OnConfigChangeList();
+	CButton btnChange;
+	CButton btnDelete;
+	afx_msg void OnBnClickedDeleteButton();
+	afx_msg void OnBnChangeConfig();
 };
 
 

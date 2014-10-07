@@ -31,6 +31,7 @@ struct converter<CString >
 	static CString to(string_t const& src)
 	{
 		
+		
          CString str(utf8(src).c_str()); 
  
          return str;
@@ -69,10 +70,12 @@ struct DllExport OUser {
 														 ",deviceno integer"\
 														 ",readonly integer"\
 														 ",timer integer"\
-														 ",reg integer)"
+														 ",reg integer"\
+														 ",bytecount integer)"
 
  
 struct DllExport OConfig {
+	 
 	int id;
   	CString name;
 	CString  label;
@@ -87,10 +90,11 @@ struct DllExport OConfig {
 	int readonly;
 	int timer;
 	int reg;
+	int bytecount;
 	void dump(){
 		printf("id:%d,name:%S,label:%S,port:%S,baud:%d,databit:%d,stopbit:%d,pority:%S,status:%d,datatype:%s,deviceno:%d"\
-			"readonly:%d,timer:%d,reg:%d\n",id,(LPSTR)(LPCTSTR)name,(LPCTSTR)label,(LPCTSTR)port,baud,databit,stopbit,(LPCTSTR)pority,
-			status,(LPCTSTR)datatype,deviceno,readonly,timer,reg);
+			"readonly:%d,timer:%d,reg:%d,bytecount:%d\n",id,(LPSTR)(LPCTSTR)name,(LPCTSTR)label,(LPCTSTR)port,baud,databit,stopbit,(LPCTSTR)pority,
+			status,(LPCTSTR)datatype,deviceno,readonly,timer,reg,bytecount);
 	};
 
 };
@@ -125,6 +129,10 @@ class DllExport DataBaseTool{
 		*db <<TABLE_DATA;
 		*db <<TABLE_DATA_IDX;
 		}
+		OConfig* loadConfigById(int id);
+		void addConfig(OConfig config);
+		void updateConfig(OConfig config);
+		void delConfig(int configid);
 		std::vector<OUser> loadUsers();
 		std::vector<OConfig> loadConfigs();
 		std::vector<OData> loadDatas();

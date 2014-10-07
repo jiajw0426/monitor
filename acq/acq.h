@@ -31,6 +31,7 @@ public:
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnLogin();
 	afx_msg void OnEditConfig();
+	afx_msg void OnEditUndo();
 };
 
 extern CacqApp theApp;
